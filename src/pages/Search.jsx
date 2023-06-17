@@ -23,7 +23,7 @@ export const Search = () => {
       const updatedAllBooks = [...bookData].filter((book) =>
         book.title.toLowerCase().includes(searchBook.trim().toLowerCase())
       );
-      setFilteredBooks(updatedAllBooks);
+      setBookData(updatedAllBooks);
     }
   };
 
@@ -71,8 +71,8 @@ export const Search = () => {
               width: "50%",
             }}
           >
-            {filteredBooks.length > 0 ? (
-              filteredBooks.map((book) => (
+            {bookData.length > 0 ? (
+              bookData.map((book) => (
                 <li style={{ margin: "35px" }} key={book.id}>
                   <img
                     style={{ height: "250px", width: "200px" }}
@@ -81,15 +81,24 @@ export const Search = () => {
                   />
                   <h3>{book.title}</h3>
                   <p>{book.author}</p>
-                  <select>
+                  <select value={book.category}>
                     <option disabled={true}>move to</option>
-                    <option onClick={() => currentlyReading(book.id)}>
+                    <option
+                      value="Currently Reading"
+                      onClick={() => currentlyReading(book.id)}
+                    >
                       Currently Reading
                     </option>
-                    <option onClick={() => wantToReadHandler(book.id)}>
+                    <option
+                      value="Want to Read"
+                      onClick={() => wantToReadHandler(book.id)}
+                    >
                       Want to Read
                     </option>
-                    <option onClick={() => readHandler(book.id)}>Read</option>
+
+                    <option value="Read" onClick={() => readHandler(book.id)}>
+                      Read
+                    </option>
                     <option onClick={() => noneHandler(book.id)}>None</option>
                   </select>
                 </li>

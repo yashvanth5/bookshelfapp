@@ -26,7 +26,7 @@ export const Home = () => {
       <div>
         <NavLink to="/search">
           {" "}
-          <button style={{ margin: "20px" }}>Search</button>
+          <button style={{ margin: "20px" }}>Search Book </button>
         </NavLink>
         <div>
           <h2>Currently Reading</h2>
@@ -52,18 +52,21 @@ export const Home = () => {
                   <select value={category}>
                     <option disabled={true}>move to</option>
                     <option
-                      value="Currently Reading"
+                      // value="Currently Reading"
                       onClick={() => currentlyReading(id)}
                     >
                       Currently Reading
                     </option>
                     <option
-                      value="Want to Read"
+                      // value="Want to Read"
                       onClick={() => wantToReadHandler(id)}
                     >
                       Want to Read
                     </option>
-                    <option value="Read" onClick={() => readHandler(id)}>
+                    <option
+                      // value="Read"
+                      onClick={() => readHandler(id)}
+                    >
                       Read
                     </option>
                     <option onClick={() => noneHandler(id)}>None</option>
