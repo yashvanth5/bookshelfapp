@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { BookContext } from "../context/BookContext";
 import { NavLink } from "react-router-dom";
+import BookData from "../BookData";
 
 export const Search = () => {
   const {
@@ -10,26 +11,25 @@ export const Search = () => {
     wantToReadHandler,
     readHandler,
     currentlyReading,
-    filteredBooks,
-    setFilteredBooks,
   } = useContext(BookContext);
 
   const [searchBook, setSearchBook] = useState("");
 
   const searchHandler = () => {
-    if (searchBook === "") {
-      setFilteredBooks(bookData);
-    } else {
-      const updatedAllBooks = [...bookData].filter((book) =>
-        book.title.toLowerCase().includes(searchBook.trim().toLowerCase())
-      );
-      setBookData(updatedAllBooks);
-    }
+    // const alltheData = [...BookData];
+    const updatedAllBooks = [...bookData].filter((book) =>
+      book.title.toLowerCase().includes(searchBook.trim().toLowerCase())
+    );
+    setBookData(updatedAllBooks);
   };
 
   useEffect(() => {
-    searchHandler();
-  }, [searchBook]);
+    if (searchBook === "") {
+      setBookData([...BookData]);
+    } else {
+      searchHandler();
+    }
+  }, [[searchBook, bookData]]);
 
   return (
     <>

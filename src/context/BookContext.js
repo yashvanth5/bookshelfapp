@@ -5,7 +5,6 @@ export const BookContext = createContext();
 
 export const BookProvider = ({ children }) => {
   const [bookData, setBookData] = useState([]);
-  const [filteredBooks, setFilteredBooks] = useState([]);
 
   useEffect(() => {
     setBookData(BookData);
@@ -60,8 +59,6 @@ export const BookProvider = ({ children }) => {
         wantToReadHandler,
         readHandler,
         currentlyReading,
-        filteredBooks,
-        setFilteredBooks,
       }}
     >
       {children}
