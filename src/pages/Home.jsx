@@ -39,7 +39,7 @@ export const Home = () => {
             }}
           >
             {filterCurrentReadings?.map((allBooks) => {
-              const { image, title, author, id } = allBooks;
+              const { image, title, author, id, category } = allBooks;
               return (
                 <li style={{ margin: "35px" }} key={id}>
                   <img
@@ -49,15 +49,23 @@ export const Home = () => {
                   />
                   <h3> {title} </h3>
                   <p>{author}</p>
-                  <select>
+                  <select value={category}>
                     <option disabled={true}>move to</option>
-                    <option onClick={() => currentlyReading(id)}>
+                    <option
+                      value="Currently Reading"
+                      onClick={() => currentlyReading(id)}
+                    >
                       Currently Reading
                     </option>
-                    <option onClick={() => wantToReadHandler(id)}>
+                    <option
+                      value="Want to Read"
+                      onClick={() => wantToReadHandler(id)}
+                    >
                       Want to Read
                     </option>
-                    <option onClick={() => readHandler(id)}>Read</option>
+                    <option value="Read" onClick={() => readHandler(id)}>
+                      Read
+                    </option>
                     <option onClick={() => noneHandler(id)}>None</option>
                   </select>
                 </li>
@@ -76,7 +84,7 @@ export const Home = () => {
             }}
           >
             {filterWantToRead?.map((allBooks) => {
-              const { image, title, author, id } = allBooks;
+              const { image, title, author, id, category } = allBooks;
               return (
                 <li key={id} style={{ margin: "35px" }}>
                   <img
@@ -86,16 +94,24 @@ export const Home = () => {
                   />
                   <h3> {title} </h3>
                   <p>{author}</p>
-                  <select>
+                  <select value={category}>
                     <option disabled={true}>move to</option>
-                    <option onClick={() => wantToReadHandler(id)}>
-                      Want to Read
-                    </option>
-                    <option onClick={() => currentlyReading(id)}>
+                    <option
+                      value="Currently Reading"
+                      onClick={() => currentlyReading(id)}
+                    >
                       Currently Reading
                     </option>
+                    <option
+                      value="Want to Read"
+                      onClick={() => wantToReadHandler(id)}
+                    >
+                      Want to Read
+                    </option>
 
-                    <option onClick={() => readHandler(id)}>Read</option>
+                    <option value="Read" onClick={() => readHandler(id)}>
+                      Read
+                    </option>
                     <option onClick={() => noneHandler(id)}>None</option>
                   </select>
                 </li>
@@ -114,7 +130,7 @@ export const Home = () => {
             }}
           >
             {filterRead?.map((allBooks) => {
-              const { image, title, author, id } = allBooks;
+              const { image, title, author, id, category } = allBooks;
               return (
                 <li key={id} style={{ marginLeft: "35px" }}>
                   <img
@@ -124,13 +140,21 @@ export const Home = () => {
                   />
                   <h3> {title} </h3>
                   <p>{author}</p>
-                  <select>
+                  <select value={category}>
                     <option disabled={true}>move to</option>
-                    <option onClick={() => readHandler(id)}>Read</option>
-                    <option onClick={() => currentlyReading(id)}>
+                    <option value="Read" onClick={() => readHandler(id)}>
+                      Read
+                    </option>
+                    <option
+                      value="Currently Reading"
+                      onClick={() => currentlyReading(id)}
+                    >
                       Currently Reading
                     </option>
-                    <option onClick={() => wantToReadHandler(id)}>
+                    <option
+                      value="Want to Read"
+                      onClick={() => wantToReadHandler(id)}
+                    >
                       Want to Read
                     </option>
 
