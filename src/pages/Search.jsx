@@ -16,7 +16,6 @@ export const Search = () => {
   const [searchBook, setSearchBook] = useState("");
 
   const searchHandler = () => {
-    // const alltheData = [...BookData];
     const updatedAllBooks = [...bookData].filter((book) =>
       book.title.toLowerCase().includes(searchBook.trim().toLowerCase())
     );
